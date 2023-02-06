@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
+import {Fab} from '../components/Fab';
 
 export const CounterScreen = () => {
   const [contador, setContador] = useState(10);
@@ -7,11 +8,17 @@ export const CounterScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Contador: {contador}</Text>
-      <TouchableOpacity onPress={() => setContador(contador + 1)}>
-        <View style={styles.buttonIncrement}>
-          <Text>+1</Text>
+
+      <Fab title="+1" onPress={() => setContador(contador + 1)} />
+      <Fab title="-1" position="bl" onPress={() => setContador(contador - 1)} />
+
+      {/* <TouchableOpacity
+        style={styles.fabLocationBL}
+        onPress={() => setContador(contador - 1)}>
+        <View style={styles.fab}>
+          <Text style={styles.fabText}>-1</Text>
         </View>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   );
 };
@@ -26,9 +33,5 @@ const styles = StyleSheet.create({
     fontSize: 40,
     position: 'relative',
     top: -15,
-  },
-  buttonIncrement: {
-    backgroundColor: 'red',
-    borderRadius: 100,
   },
 });
